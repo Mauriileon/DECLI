@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo 3</title>
+</head>
+<body>
+
+    <!-- Líneas 8-13 no visibles en la captura: se asume un contenedor -->
+    <div id="contenedor"></div>
+
+    <button onclick="probarAlert()">1. Ventana Alerta</button>
+    <button onclick="probarConsole()">2. Mensaje en Consola</button>
+    <button onclick="probarInnerHTML()">3. Modificar DOM (innerHTML)</button>
+    <button onclick="probarDocumentWrite()">4. Document Write</button>
+
+    <script>
+        function probarAlert() {
+            // Muestra cuadro emergente
+            window.alert("¡Hola! Esto es una alerta con window.alert().");
+        }
+
+        function probarConsole() {
+            // Escribe en la consola (Presionar F12 en el navegador para ver)
+            console.log("Mensaje enviado a la consola del navegador a las " + new Date().toLocaleTimeString());
+            alert("Mensaje enviado a la consola. Abre las Herramientas de Desarrollo (F12) para verlo.");
+        }
+
+        function probarInnerHTML() {
+            // Escribe dentro de un elemento del DOM
+            document.getElementById("contenedor").innerHTML = "<strong>Texto inyectado con innerHTML</strong>";
+        }
+
+        function probarDocumentWrite() {
+            // Reescribe o añade contenido en el flujo HTML
+            document.write("<h3>Página sobrescrita utilizando document.write()</h3>");
+        }
+    </script>
+</body>
+</html>

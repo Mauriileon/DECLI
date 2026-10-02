@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Secuencia de imágenes</title>
+<script>
+var numero = 1;
+
+function siguiente() {
+    numero = numero + 1;
+    if (numero > 4) {
+        numero = 1;
+    }
+    document.getElementById("imagen").src = "perro" + numero + ".png";
+}
+</script>
+</head>
+<body>
+<h2>Haz clic en la imagen para ver la secuencia</h2>
+<img id="imagen" src="perro1.png" onclick="siguiente()">
+</body>
+</html>

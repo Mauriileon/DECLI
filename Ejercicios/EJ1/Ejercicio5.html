@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mensaje de bienvenida</title>
+
+<body>
+<h2>Elige un idioma</h2>
+
+<button onclick="ruso()">Ruso</button>
+<button onclick="espanol()">Español</button>
+<button onclick="ingles()">Inglés</button>
+
+<p id="mensaje"></p>
+</body>
+
+
+<script>
+function ruso() {
+    document.getElementById("mensaje").innerHTML = "Добро пожаловать";
+    document.getElementById("mensaje").style.color = "red";
+}
+
+function espanol() {
+    document.getElementById("mensaje").innerHTML = "Bienvenido";
+    document.getElementById("mensaje").style.color = "green";
+}
+
+function ingles() {
+    document.getElementById("mensaje").innerHTML = "Welcome";
+    document.getElementById("mensaje").style.color = "blue";
+}
+</script>
+</head>
+
+</html>
