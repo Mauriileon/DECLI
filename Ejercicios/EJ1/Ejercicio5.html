@@ -10,8 +10,11 @@
 <button onclick="ruso()">Ruso</button>
 <button onclick="espanol()">Español</button>
 <button onclick="ingles()">Inglés</button>
+<button onclick="andaluz()">Andaluz</button>
+<button onclick="vasco()">vasco</button>
 
-<p id="mensaje"></p>
+
+<p id="mensaje">...</p>
 </body>
 
 
@@ -29,6 +32,17 @@ function espanol() {
 function ingles() {
     document.getElementById("mensaje").innerHTML = "Welcome";
     document.getElementById("mensaje").style.color = "blue";
+}
+
+function andaluz(){
+    document.getElementById("mensaje").innerHTML = "Bienvenío compare";
+    document.getElementById("mensaje").style.color = "purple";
+
+}
+
+function vasco(){
+    document.getElementById("mensaje").innerHTML = "Ongi etorri ";
+    document.getElementById("mensaje").style.color = "orange";
 }
 </script>
 </head>
