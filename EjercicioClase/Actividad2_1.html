@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function suma(a, b) {
+  return a + b;
+}
+
+function resta(a, b) {
+  return a - b;
+}
+
+function multiplicacion(a, b) {
+  return a * b;
+}
+
+function division(a, b) {
+  if (b === 0) {
+    return "Error: no se puede dividir entre cero";
+  }
+  return a / b;
+}
+
+
+var c = suma(3, 3);          
+c = resta(c, 2);             
+c = multiplicacion(c, 5);    
+c = division(c, 4);        
+var text = "El valor de c será ahora: " + c;
+console.log(text);
+
+
+
+</script>
+</html>
