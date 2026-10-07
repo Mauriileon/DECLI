@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Extraer mes y año</title>
+</head>
+<body>
+  <p id="resultado"></p>
+
+   <script>
+  var fecha = new Date(2024, 4, 15);   // 15 de mayo de 2024
+
+  var mes = fecha.getMonth() + 1;
+  var anio = fecha.getFullYear();
+
+  document.write("Mes: " + mes + "<br>");
+  document.write("Año: " + anio);
+</script>
+  
+</body>
+</html>
