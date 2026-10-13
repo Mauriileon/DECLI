@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Boletín de notas de clase</title>
+</head>
+<body>
+    <h1>Boletín de notas de clase</h1>
+
+    <table border="2" id="tabla">
+        <tr>
+            <th>Alumno</th>
+            <th>1T</th>
+            <th>2T</th>
+            <th>3T</th>
+            <th>Media</th>
+            <th>Calificación</th>
+        </tr>
+
+        <tr>
+            <td>Ana</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Luis</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Mara</td>
+            <td>3</td>
+            <td>4</td>
+            <td>2</td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Pablo</td>
+            <td>9</td>
+            <td>10</td>
+            <td>9</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h2>Añadir alumno</h2>
+    Nombre: <input type="text" id="nombre"><br><br>
+    1T: <input type="number" id="nota1" min="0" max="10" ><br><br>
+    2T: <input type="number" id="nota2" min="0" max="10" ><br><br>
+    3T: <input type="number" id="nota3" min="0" max="10" ><br><br>
+    <button onclick="anadirAlumno()">Añadir</button>
+
+    <script>
+        function color(nota) {
+            if (nota >= 5) {
+                return "green";
+            } else {
+                return "red";
+            }
+        }
+
+        function calificacion(nota) {
+            if (nota >= 9) {
+                return "Sobresaliente";
+            } else if (nota >= 7) {
+                return "Notable";
+            } else if (nota >= 6) {
+                return "Bien";
+            } else if (nota >= 5) {
+                return "suficiente";
+            } else {
+                return "insuficiente";
+            }
+        }
+
+        function rellenarFila(fila) {
+            var celdas = fila.cells;
+
+            var nota1 = Number(celdas[1].innerText);
+            var nota2 = Number(celdas[2].innerText);
+            var nota3 = Number(celdas[3].innerText);
+
+            var media = (nota1 + nota2 + nota3) / 3;
+
+            celdas[1].style.background = color(nota1);
+            celdas[2].style.background = color(nota2);
+            celdas[3].style.background = color(nota3);
+
+            celdas[4].innerText = media.toFixed(1);
+            celdas[4].style.background = color(media);
+            celdas[5].innerText = calificacion(media);
+        }
+
+        var tabla = document.getElementById("tabla");
+
+        for (var i = 1; i < tabla.rows.length; i++) {
+            rellenarFila(tabla.rows[i]);
+        }
+
+        function anadirAlumno() {
+            var nombre = document.getElementById("nombre").value;
+            var nota1 = document.getElementById("nota1").value;
+            var nota2 = document.getElementById("nota2").value;
+            var nota3 = document.getElementById("nota3").value;
+
+            if (nombre == "" || nota1 == "" || nota2 == "" || nota3 == "") {
+                window.alert("Rellena el nombre y las tres notas");
+                return;
+            }
+
+            var fila = tabla.insertRow();
+
+            fila.insertCell().innerText = nombre;
+            fila.insertCell().innerText = nota1;
+            fila.insertCell().innerText = nota2;
+            fila.insertCell().innerText = nota3;
+            fila.insertCell();
+            fila.insertCell();
+
+            rellenarFila(fila);
+
+            document.getElementById("nombre").value = "";
+            document.getElementById("nota1").value = "";
+            document.getElementById("nota2").value = "";
+            document.getElementById("nota3").value = "";
+        }
+    </script>
+    <style>
+        body {
+            background-color: aliceblue;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+
+
+    </style>
+</body>
+</html>
