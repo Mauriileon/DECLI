@@ -7,7 +7,7 @@
 <body>
     <h1>Boletín de notas de clase</h1>
 
-    <table border="2" id="tabla">
+    <table border="3" id="tabla">
         <tr>
             <th>Alumno</th>
             <th>1T</th>
@@ -60,6 +60,30 @@
     2T: <input type="number" id="nota2" min="0" max="10" ><br><br>
     3T: <input type="number" id="nota3" min="0" max="10" ><br><br>
     <button onclick="anadirAlumno()">Añadir</button>
+
+
+    <h2>CONSULTAS</h2>
+ 
+    <div class="fila">
+      <button id="btnAprobados" onclick="contarAprobados()">CONTAR APROBADOS</button>
+      <button id="btnMejor" onclick="mejorNota()">MEJOR NOTA DE LA CLASE</button>
+      <button id="btnMediaTrimestre" onclick="mediaTrimestre()">Media de un trimestre</button>
+      <select id="selTrimestre">
+        <option value="0">1ºT</option>
+        <option value="1" selected>2ºT</option>
+        <option value="2">3ºT</option>
+      </select>
+    </div>
+ 
+    <div class="fila">
+      <input type="text" id="inputAlumno" placeholder="Introduce el nombre del alumno">
+      <button id="btnBuscar" onclick="buscarAlumno()">BUSCAR</button>
+    </div>
+ 
+    <h3>Resultado</h3>
+    <pre id="resultado"></pre>
+ 
+
 
     <script>
         function color(nota) {
@@ -135,6 +159,105 @@
             document.getElementById("nota2").value = "";
             document.getElementById("nota3").value = "";
         }
+
+
+        function contarAprobados(){
+            var contadorAprobados = 0;
+           for (var i = 1; i < tabla.rows.length; i++) {
+                var fila = tabla.rows[i];
+                
+                var notaMedia = Number(fila.cells[4].innerText);
+
+                
+                if (notaMedia >= 5) {
+                    contadorAprobados++;
+                }
+            }
+    
+                document.getElementById("resultado").innerText = "Número de aprobados: " + contadorAprobados;
+         }
+
+
+
+         function mejorNota() {
+            var mejorNota = 0;
+            var mejorAlumno = "";
+
+            for (var i = 1; i < tabla.rows.length; i++) {
+                var fila = tabla.rows[i];
+                var nota1 = Number(fila.cells[1].innerText);
+                var nota2 = Number(fila.cells[2].innerText);
+                var nota3 = Number(fila.cells[3].innerText);
+
+                if (nota1 > mejorNota) {
+                    mejorNota = nota1;
+                    mejorAlumno = fila.cells[0].innerText;
+                }
+
+                if (nota2 > mejorNota) {
+                    mejorNota = nota2;
+                    mejorAlumno = fila.cells[0].innerText;
+                }
+
+                if (nota3 > mejorNota) {
+                    mejorNota = nota3;
+                    mejorAlumno = fila.cells[0].innerText;
+                }
+            }
+
+            document.getElementById("resultado").innerText = "Mejor nota: " + mejorNota + " del alumno: " + mejorAlumno;
+   
+        }      
+    
+       function mediaTrimestre() {
+            var trimestre = Number(document.getElementById("selTrimestre").value);
+            var sumaNotas = 0;
+            var numAlumnos = tabla.rows.length - 1;
+
+        for (var i = 1; i < tabla.rows.length; i++) {
+            var fila = tabla.rows[i];
+            var nota = Number(fila.cells[trimestre + 1].innerText);
+            sumaNotas += nota;
+        }
+
+        var media = sumaNotas / numAlumnos;
+
+        document.getElementById("resultado").innerText = "Media del trimestre " + (trimestre + 1) + ": " + media.toFixed(2);
+    }
+    
+    function buscarAlumno() {
+        var nombreBuscado = document.getElementById("inputAlumno").value.toLowerCase();
+        var encontrado = false;
+
+        for (var i = 1; i < tabla.rows.length; i++) {
+            var fila = tabla.rows[i];
+            var nombreAlumno = fila.cells[0].innerText.toLowerCase();
+
+            if (nombreAlumno == nombreBuscado) {
+                var nota1 = Number(fila.cells[1].innerText);
+                var nota2 = Number(fila.cells[2].innerText);
+                var nota3 = Number(fila.cells[3].innerText);
+                var media = Number(fila.cells[4].innerText);
+                var calificacionFinal = fila.cells[5].innerText;
+
+                document.getElementById("resultado").innerText =
+                    " Alumno: " + fila.cells[0].innerText + 
+                    " 1T: " + nota1 + 
+                    " 2T: " + nota2 +
+                    " 3T: " + nota3 + 
+                    " Media : " + media.toFixed(1) + 
+                    " Calificación: " + calificacionFinal;
+
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            document.getElementById("resultado").innerText = "Alumno no encontrado.";
+        }
+    }
+    
     </script>
     <style>
         body {
