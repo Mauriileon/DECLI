@@ -77,7 +77,7 @@
  
     <div class="fila">
       <input type="text" id="inputAlumno" placeholder="Introduce el nombre del alumno">
-      <button id="btnBuscar" onclick="buscarAlumno()">BUSCAR</button>
+      <button   id="btnBuscar" onclick="buscarAlumno()">BUSCAR</button>
     </div>
  
     <h3>Resultado</h3>
@@ -96,13 +96,13 @@
 
         function calificacion(nota) {
             if (nota >= 9) {
-                return "Sobresaliente";
+                return "Sobresaliente ";
             } else if (nota >= 7) {
-                return "Notable";
+                return "Notable ";
             } else if (nota >= 6) {
-                return "Bien";
+                return "Bien ";
             } else if (nota >= 5) {
-                return "suficiente";
+                return " suficiente";
             } else {
                 return "insuficiente";
             }
@@ -113,7 +113,7 @@
 
             var nota1 = Number(celdas[1].innerText);
             var nota2 = Number(celdas[2].innerText);
-            var nota3 = Number(celdas[3].innerText);
+            var  nota3 = Number(celdas[3].innerText);
 
             var media = (nota1 + nota2 + nota3) / 3;
 
@@ -174,7 +174,7 @@
                 }
             }
     
-                document.getElementById("resultado").innerText = "Número de aprobados: " + contadorAprobados;
+                document.getElementById("resultado").innerText = "Numerode aprobados: " + contadorAprobados;
          }
 
 
