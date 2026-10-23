@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Rombo hueco configurable</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    pre  { font-family: "Courier New", monospace; font-size: 20px; line-height: 1.1; }
+  </style>
+</head>
+<body>
+  <h1>Rombo hueco</h1>
+
+  <label for="filas">Número de filas (impar):</label>
+  <input type="number" id="filas" value="7" min="1" max="99">
+  <button id="dibujar">Dibujar</button>
+
+  <pre id="rombo"></pre>
+
+  <script>
+    function dibujarRombo() {
+      let filas = parseInt(document.getElementById("filas").value);
+
+      if (isNaN(filas) || filas < 1) {
+        filas = 7;
+      }
+      if (filas % 2 === 0) {
+        filas++;
+      }
+      document.getElementById("filas").value = filas;
+
+      const mitad = (filas - 1) / 2;
+      let resultado = "";
+
+      for (let i = 0; i < filas; i++) {
+        let distancia = mitad - i;
+        if (distancia < 0) {
+          distancia = -distancia;
+        }
+        const ancho = mitad - distancia;
+
+        let linea = "";
+
+        for (let e = 0; e < distancia; e++) {
+          linea += " ";
+        }
+        linea += "*";
+
+        if (ancho > 0) {
+          for (let e = 0; e < 2 * ancho - 1; e++) {
+            linea += " ";
+          }
+          linea += "*";
+        }
+
+        resultado += linea + "\n";
+      }
+
+      document.getElementById("rombo").textContent = resultado;
+    }
+
+    document.getElementById("dibujar").addEventListener("click", dibujarRombo);
+    dibujarRombo();
+  </script>
+</body>
+</html>
