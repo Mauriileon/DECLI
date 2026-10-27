@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reloj con pausa</title>
+</head>
+<body>
+  <p id="reloj"></p>
+  <button id="parar">Parar</button>
+  <button id="reanudar">Reanudar</button>
+
+  <script>
+    const reloj = document.getElementById("reloj");
+    let id;
+
+    const mostrarHora = () => {
+      reloj.textContent = new Date().toLocaleTimeString("es-ES");
+    };
+
+    // Arranca el reloj
+    id = setInterval(mostrarHora, 1000);
+
+    // Parar
+    document.getElementById("parar").onclick = () => clearInterval(id);
+
+    // Reanudar
+    document.getElementById("reanudar").onclick = () => {
+      clearInterval(id); 
+      id = setInterval(mostrarHora, 1000);
+    };
+  </script>
+</body>
+</html>

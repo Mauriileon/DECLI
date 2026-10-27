@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Ejercicio 2 · ¿Cuántos días faltan?
+
+const diasHasta = fecha => Math.ceil((fecha - new Date()) / 86400000);
+
+console.log(diasHasta(new Date(2026, 11, 18))); 
+
+
+const anio = new Date().getFullYear();
+let cumple = new Date(2027, 4, 5);
+
+
+console.log("Faltan " + diasHasta(cumple) + " días para mi cumpleaños");
+</script>
+</html>
