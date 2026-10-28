@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Lista de tareas</h1>
+
+  <input id="caja" placeholder="Escribe una tarea">
+  <button onclick="anadirTarea(document.getElementById('caja').value)">Añadir</button>
+  <button onclick="verTareas()">Ver tareas</button>
+
+  <p id="lista"></p>
+
+  <script>
+    function anadirTarea(texto) {
+      let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+      tareas.push(texto);
+      localStorage.setItem("tareas", JSON.stringify(tareas));
+      document.getElementById("caja").value = "";
+    }
+
+    function verTareas() {
+      let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+      document.getElementById("lista").textContent = tareas.join(" | ");
+    }
+  </script>
+</body>
+</html>

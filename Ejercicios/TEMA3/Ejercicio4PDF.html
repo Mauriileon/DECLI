@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //  crear la cookie dura 7 días
+document.cookie = "idioma=es; max-age=604800; path=/";
+
+function leerCookie(nombre) {
+  const pares = document.cookie.split("; ");
+  for (let i = 0; i < pares.length; i++) {
+    const partes = pares[i].split("=");
+    if (partes[0] === nombre) return decodeURIComponent(partes[1]);
+  }
+  return null;
+}
+
+console.log(leerCookie("idioma"));
+
+//  borrarla 
+document.cookie = "idioma=; max-age=0; path=/";
+
+console.log(leerCookie("idioma")); // null
+
+
+</script>
+</html>
